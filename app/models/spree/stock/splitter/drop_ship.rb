@@ -12,6 +12,13 @@ module Spree
             # Determine which supplier to package drop shipped items.
             drop_ship = package.contents.select { |content| content.variant.suppliers.count > 0 }
             drop_ship.each do |content|
+              puts "___________________________"
+              puts "content.variant.supplier_variants.first"
+              puts content.variant.supplier_variants.first
+              puts "content:"
+              for attribute in content.attributes.keys
+                puts attribute.humanize + ' => ' + content.attributes[attribute].to_s
+              end
               # Select supplier providing at the lowest cost.
               supplier = content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').first.supplier
               # Select first available stock location.
