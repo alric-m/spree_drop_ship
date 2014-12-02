@@ -20,6 +20,14 @@ module Spree
               if existing_package = split_packages.detect { |p| p.stock_location == stock_location }
                 existing_package.contents << content
               else
+                puts "___________________________"
+                puts "package"
+                puts package
+                puts "content"
+                puts content
+                puts "[content]"
+                puts [content]
+                puts "___________________________"
                 split_packages << Spree::Stock::Package.new(stock_location, order, [content])
               end
             end
