@@ -27,8 +27,10 @@ module Spree
                 puts content
                 puts "[content]"
                 puts [content]
+                puts "current_order"
+                puts current_order
                 puts "___________________________"
-                split_packages << Spree::Stock::Package.new(stock_location, order, [content])
+                split_packages << Spree::Stock::Package.new(stock_location, current_order, [content])
               end
             end
           end
