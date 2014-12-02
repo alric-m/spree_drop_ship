@@ -14,11 +14,11 @@ module Spree
             drop_ship.each do |content|
               puts "___________________________"
               puts "content.variant.supplier_variants.first"
-              puts content.variant.supplier_variants.first
-              puts "content:"
-              for attribute in content.attributes.keys
-                puts attribute.humanize + ' => ' + content.attributes[attribute].to_s
-              end
+              puts content.variant.supplier_variants.first.id
+              puts "content.variant.supplier_variants.first.supplier"
+              puts content.variant.supplier_variants.first.supplier.id
+              puts "content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count"
+              puts content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count
               # Select supplier providing at the lowest cost.
               supplier = content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').first.supplier
               # Select first available stock location.
