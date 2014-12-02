@@ -13,10 +13,11 @@ module Spree
             drop_ship = package.contents.select { |content| content.variant.suppliers.count > 0 }
             drop_ship.each do |content|
               puts "___________________________"
-              puts "content.variant.supplier_variants.first"
-              puts content.variant.supplier_variants.first.id
+              puts "___________________________"
               puts "content.variant.supplier_variants.first.supplier"
               puts content.variant.supplier_variants.first.supplier.id
+              puts "content.variant.supplier_variants.last.supplier"
+              puts content.variant.supplier_variants.last.supplier.id
               puts "content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count"
               puts content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count
               # Select supplier providing at the lowest cost.
