@@ -1,5 +1,10 @@
 module Spree
+
   class DropShipOrderMailer < Spree::BaseMailer
+
+=begin
+  class DropShipOrderMailer < ActionMailer::Base
+=end
 
     default from: Spree::Store.current.mail_from_address
 
