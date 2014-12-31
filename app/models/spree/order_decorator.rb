@@ -11,7 +11,11 @@ Spree::Order.class_eval do
     shipments.each do |shipment|
       if SpreeDropShip::Config[:send_supplier_email] && shipment.supplier.present?
         begin
-          Spree::DropShipOrderMailer.supplier_order(shipment.id).deliver!
+          if shipment.line_items.first.variant.shipping_category.name == "Door2Door"
+            Spree::DropShipOrderMailer.door_to_door_order(shipment.id).deliver!
+          else
+            Spree::DropShipOrderMailer.supplier_order(shipment.id).deliver!
+          end
         rescue => ex #Errno::ECONNREFUSED => ex
           puts ex.message
           puts ex.backtrace.join("\n")
