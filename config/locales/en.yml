@@ -44,6 +44,15 @@ en:
     drop_ship_order_number: "Drop Ship Order #%{number}"
     drop_ship_orders: Drop Ship Orders
     drop_ship_settings: Drop Ship Settings
+    door_to_door: Door to door
+    door_to_door_order_mailer:
+      supplier_order:
+        hello: "Hello %{name},"
+        subject: "%{name} Door to door #%{number}"
+        thank_you_again: "Thank you again for your business, <b>%{name}</b>"
+    door_to_door_order_number: "Door to door Order #%{number}"
+    door_to_door_orders: Door to door Orders
+    door_to_door_settings: Door to door Settings
     editing_supplier: Editing Supplier
     individual: Individual
     listing_suppliers: Listing Suppliers
