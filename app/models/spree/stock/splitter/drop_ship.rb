@@ -12,14 +12,6 @@ module Spree
             # Determine which supplier to package drop shipped items.
             drop_ship = package.contents.select { |content| content.variant.suppliers.count > 0 }
             drop_ship.each do |content|
-              puts "___________________________"
-              puts "___________________________"
-              puts "content.variant.supplier_variants.first.supplier"
-              puts content.variant.supplier_variants.first.supplier.id
-              puts "content.variant.supplier_variants.last.supplier"
-              puts content.variant.supplier_variants.last.supplier.id
-              puts "content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count"
-              puts content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').count
               # Select supplier providing at the lowest cost.
               supplier = content.variant.supplier_variants.order('spree_supplier_variants.cost ASC').first.supplier
               # Select first available stock location.
@@ -28,16 +20,6 @@ module Spree
               if existing_package = split_packages.detect { |p| p.stock_location == stock_location }
                 existing_package.contents << content
               else
-                puts "___________________________"
-                puts "package"
-                puts package
-                puts "content"
-                puts content
-                puts "stock_location"
-                puts stock_location
-                puts "supplier id"
-                puts supplier.id
-                puts "___________________________"
                 split_packages << Spree::Stock::Package.new(stock_location, [content])
                 # split_packages << Spree::Stock::Package.new(stock_location, current_order, [content])
               end
